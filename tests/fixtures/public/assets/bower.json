@@ -1,0 +1,25 @@
+{
+  "name": "Vegas Profiler Assets",
+  "version": "1.0.0",
+  "authors": [
+    "slawek <slawomir.zytko@gmail.com>",
+    "arek <arkadiusz.ostrycharz@gmail.com>",
+    "radek <radek@archdevil.pl>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "com",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~1.10.*",
+    "bootstrap": "3.1.*",
+    "font-awesome": "4.*"
+  }
+}
+
