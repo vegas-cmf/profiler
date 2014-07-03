@@ -21,6 +21,7 @@ class Bootstrap extends \Vegas\Application\Bootstrap
     {
         parent::setup();
         $this->initDbMappings();
+        $this->initDb();
         $this->initProfiler();
 
         return $this;
@@ -30,6 +31,17 @@ class Bootstrap extends \Vegas\Application\Bootstrap
     {
         $mappingManager = new MappingManager();
         $mappingManager->add(new Json());
+    }
+    
+    protected function initDb()
+    {
+        $di = $this->di;
+        $di->set('db', function() use ($di) {
+            $arrayConfig = (array)$this->config->db;
+            $db = new \Phalcon\Db\Adapter\Pdo\Sqlite($arrayConfig);
+            $db->setEventsManager($di->getShared('eventsManager'));
+            return $db;
+        }, true);
     }
     
     protected function initProfiler()

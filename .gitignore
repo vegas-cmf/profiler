@@ -36,3 +36,6 @@ composer.phar
 composer.lock
 
 cache/
+
+# Test database
+test.db

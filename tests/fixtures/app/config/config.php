@@ -28,6 +28,12 @@ return array(
         'db' => 'vegas_test',
     ),
     
+    'db' => [
+        // php5_sqlite module has to be installed first
+        'dbname'    => APP_ROOT . '/db/test.db',
+        'charset'   => 'utf8'
+    ],
+    
     'profiler'  => [
         // Put all used profiler classes here
         '\Vegas\Profiler\DataCollector\Time',

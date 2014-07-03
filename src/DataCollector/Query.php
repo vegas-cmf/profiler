@@ -49,7 +49,6 @@ class Query implements DataCollectorInterface
     public function beforeQuery($event, $connection)
     {
         $this->dbProfiler->startProfile($connection->getSQLStatement());
-        $this->queries[] = $connection->getSQLStatement();
     }
     
     public function afterQuery($event, $connection)
@@ -57,8 +56,9 @@ class Query implements DataCollectorInterface
         $this->dbProfiler->stopProfile();
         $this->queries[] = [
             'query' => $connection->getSQLStatement(),
-            'time'  => $connection->getTotalElapsedSeconds()
+            'time'  => $this->dbProfiler->getTotalElapsedSeconds()
         ];
+        $this->dbProfiler->reset();
         ++$this->counter;
     }
 

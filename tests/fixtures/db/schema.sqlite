@@ -1,0 +1,11 @@
+-- Import this file before running tests in order to enable SQL profiler
+-- Update app/config/config.php as well with valid DB credentials
+
+DROP TABLE IF EXISTS `vegas_sample`;
+CREATE TABLE IF NOT EXISTS `vegas_sample` (
+  id INTEGER PRIMARY KEY,  
+  type TEXT,
+  value INTEGER,
+  created_at TIMESTAMP,
+  updated_at TIMESTAMP
+);

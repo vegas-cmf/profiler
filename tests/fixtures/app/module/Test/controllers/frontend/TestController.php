@@ -18,21 +18,12 @@ class TestController extends ControllerAbstract
 {
     public function indexAction()
     {
+        // just render the view
     }
 
-    public function createAction()
+    public function queryAction()
     {
-    }
-
-    public function updateAction()
-    {
-    }
-
-    public function deleteAction()
-    {
-    }
-
-    public function showAction()
-    {
+        $data = (new \Test\Services\TriggerQuery)->doSomeQueries();
+        $this->view->setVar('data', $data);
     }
 } 
