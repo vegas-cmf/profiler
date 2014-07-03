@@ -29,7 +29,7 @@ class Manager implements InjectionAwareInterface, EventsAwareInterface, \JsonSer
     /**
      * @var string name of profiler module to skip attaching all events
      */
-    protected static $profilerModuleName = 'VegasProfiler';
+    protected static $profilerModuleName = 'Profiler';
     
     /**
      * @var string common interface for all data collectors
