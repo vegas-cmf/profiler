@@ -26,7 +26,7 @@ class SqliteServiceProvider implements ServiceProviderInterface
     public function register(DiInterface $di)
     {
         $di->set(self::SERVICE_NAME, function() use ($di) {
-            $arrayConfig = (array)$di->get('config')->db;
+            $arrayConfig = (array)$di->get('config')->{self::SERVICE_NAME};
             $db = new \Phalcon\Db\Adapter\Pdo\Sqlite($arrayConfig);
             $db->setEventsManager($di->getShared('eventsManager'));
             return $db;

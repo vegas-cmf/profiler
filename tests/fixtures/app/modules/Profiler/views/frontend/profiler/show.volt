@@ -1,16 +1,15 @@
-<table class="table table-bordered table-hover">
-    <thead>
-        <tr>
-            <th>Profiler</th>
-            <th class="options">Data collected</th>
-        </tr>
-    </thead>
-    <tbody>
-    {% for name, data in profiler %}
-    <tr>
-        <td>{{ name }}</td>
-        <td class="options">{{ dump(data) }}</td>
-    </tr>
-    {% endfor %}
-    </tbody>
-</table>
+<!-- Nav tabs -->
+<ul class="nav nav-tabs">
+{% for name, data in profiler %}
+  <li><a href="#{{ name|stripslashes }}" data-toggle="tab">{{ name }}</a></li>
+{% endfor %}
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+{% for name, data in profiler %}
+  <div class="tab-pane fade" id="{{ name|stripslashes }}">
+    {{ partial('frontend/profiler/_' ~ name|lower|stripslashes, ['data': data]) }}
+  </div>
+{% endfor %}
+</div>

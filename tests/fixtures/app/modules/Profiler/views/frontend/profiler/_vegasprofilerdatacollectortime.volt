@@ -1,0 +1,1 @@
+Elapsed time: <strong>{{ data }}</strong>s
