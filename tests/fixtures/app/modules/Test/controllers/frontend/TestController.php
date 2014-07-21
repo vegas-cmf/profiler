@@ -12,13 +12,26 @@
  
 namespace Test\Controllers\Frontend;
 
-use Vegas\Mvc\Controller\ControllerAbstract;
+use Vegas\Mvc\Controller\ControllerAbstract,
+    Vegas\Exception;
 
 class TestController extends ControllerAbstract
 {
     public function indexAction()
     {
         // just render the view
+    }
+    
+    public function exceptionAction()
+    {
+        $data = '';
+        try {
+            throw new Exception('Will not be caught by resolver', 416);
+        } catch (Exception $ex) {
+            $data .= $ex->getMessage();
+        }
+        $this->view->setVar('data', $data);
+        throw new Exception('This exception is expected to to be caught', 404);
     }
 
     public function queryAction()

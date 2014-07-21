@@ -9,6 +9,15 @@ return [
         ],
         'params' => []
     ],
+    'exception' => [
+        'route' => '/exception',
+        'paths' => [
+            'module' => 'Test',
+            'controller' => 'Frontend\Test',
+            'action' => 'exception'
+        ],
+        'params' => []
+    ],
     'query' => [
         'route' => '/query',
         'paths' => [
