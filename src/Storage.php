@@ -65,7 +65,11 @@ class Storage
         }
         return json_decode($data, true);
     }
-    
+
+    /**
+     * Deletes temporary file
+     * @return $this
+     */
     public function delete()
     {
         if (is_file($this->getFilepath())) {
@@ -74,18 +78,29 @@ class Storage
         
         return $this;
     }
-    
+
+    /**
+     * @param string $requestId
+     * @return $this
+     */
     public function setRequestId($requestId)
     {
         $this->requestId = $requestId;
+        return $this;
     }
-    
+
+    /**
+     * @return string
+     */
     public function getRequestId()
     {
         return $this->requestId;
     }
-    
-    private function getFilepath()
+
+    /**
+     * @return string
+     */
+    public function getFilepath()
     {
         return implode(DIRECTORY_SEPARATOR, [$this->dir, $this->requestId]);
     }
