@@ -39,13 +39,12 @@ class Bootstrap extends \Vegas\Application\Bootstrap
         } else {
             $dataCollectors = [];
         }
-        
-        $di = $this->di;
-        $di->set(ProfilerDataCollector::DI_NAME, function() use ($di) {
+
+        $this->di->set(ProfilerDataCollector::DI_NAME, function() {
             return (new ProfilerManager)
-                ->setEventsManager($di->getShared('eventsManager'));
+                ->setEventsManager($this->di->getShared('eventsManager'));
         }, true);
-        $di->get(ProfilerDataCollector::DI_NAME)->enable($dataCollectors);
+        $this->di->get(ProfilerDataCollector::DI_NAME)->enable($dataCollectors);
     }
 
     /**
