@@ -16,7 +16,7 @@ before_script:
   - (cd cphalcon/ext; export CFLAGS="-g3 -O1 -fno-delete-null-pointer-checks -Wall"; phpize && ./configure --enable-phalcon && make -j4 && sudo make install && phpenv config-add ../unit-tests/ci/phalcon.ini)
   - curl -s http://getcomposer.org/installer | php
   - php composer.phar install --dev
-  - apt-get install sqlite3 php5-sqlite
+  - sudo apt-get install sqlite3 php5-sqlite
 
 script:
   - (cd tests/fixtures; cat db/schema.sqlite | sqlite3 db/test.db)
